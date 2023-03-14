@@ -1,0 +1,49 @@
+$enrolledSubjects = new enrolledSubjects();
+     $enrolledSubjects->esno="232";
+     $enrolledSubjects->subjectCode="IT Elect 3";
+     $enrolledSubjects->description="madugo";
+     $enrolledSubjects->units="3";
+     $enrolledSubjects->schedule="monday";
+     $enrolledSubjects->save();
+     echo "enrolled subs";
+
+     $grades = new grades();
+$grades->gNo="33";
+$grades->esNo="232";
+$grades->sNo="1";
+$grades->prelim="3";
+$grades->midterm="1";
+$grades->finals="3";
+$grades->remarks="fail";
+$grades->save();
+echo "grade is successfully created";
+
+// $studentInfo = new studentInfo();
+        // $studentInfo->idNo = "C20-0348";
+        // $studentInfo->firstName = "Kurt Ryan";
+        // $studentInfo->middleName = "Abella";
+        // $studentInfo->lastName = "Panong";
+        // $studentInfo->suffix = "";
+        // $studentInfo->course = "BSIT";
+        // $studentInfo->year = "3";
+        // $studentInfo->birthday = "2001-07-27";
+        // $studentInfo->gender = "Male";
+        // $studentInfo->save();
+        // echo "Student information successfully saved in the database";
+
+
+    //delete a record
+
+    // $studentInfo = studentInfo::where('sno', 2);
+    // $studentInfo->delete();
+    // echo "Student info has successfully deleted"
+
+    //update record
+
+    // $studentInfo = studentInfo::where('sno', 1)
+    // ->update(['firstName'=> 'Kurt John']);
+    // echo "student info has been successfully updated";
+
+//retrieve result
+$studentInfo = studentInfo::all();
+return $studentInfo;
