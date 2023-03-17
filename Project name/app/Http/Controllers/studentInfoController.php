@@ -12,6 +12,12 @@ class studentInfoController extends Controller
      */
     public function index()
     {
+
+      $studentInfo = studentinfo::all();
+
+      return view('students.index', compact('studentInfo'));
+
+
         //
         // $studentInfo = new studentInfo();
         // $studentInfo->idNo = "C20-0348";
@@ -40,8 +46,8 @@ class studentInfoController extends Controller
     // echo "student info has been successfully updated";
 
 //retrieve result
-$studentInfo = studentInfo::all();
-return $studentInfo;
+// $studentInfo = studentInfo::all();
+// return $studentInfo;
 
 
 }
@@ -60,6 +66,20 @@ return $studentInfo;
     {
 
       //
+
+      $validatedData = $request->validate([
+        'xidNo' => ['required', 'max:8'],
+        'xfirstName' => ['required', 'max:20'],
+        'xmiddleName' => ['max:15'],
+        'xlastName' => ['required', 'max:15'],
+        'xsuffix' => ['nullable', 'max:5'],
+        'xcourse' => ['required', 'max:15'],
+        'xyear' => ['required'],
+        'xbirthday' => ['required', 'date'],
+        'xgender' => ['required'],
+
+      ]);
+
       $studentInfo = new StudentInfo();
       $studentInfo->idNo = $request->xidNo;
       $studentInfo->firstName = $request->xfirstName;
@@ -84,7 +104,11 @@ return $studentInfo;
      */
     public function show(string $id)
     {
+
+
         //
+        $studentInfo =studentInfo::where('sno', $id) ->get();
+        return view ('students.show', compact('studentInfo'));
     }
 
     /**
