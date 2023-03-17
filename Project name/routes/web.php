@@ -26,9 +26,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //first route - going to stduents/index file
-Route::get('/students', function () {
-    return view('students.index');
-})->middleware(['auth', 'verified'])->name('students');
+// Route::get('/students', function () {
+//     return view('students.index');
+// })->middleware(['auth', 'verified'])->name('students');
 
 // second route - navigate to form add student
 Route::get('/students/add', function () {
@@ -39,6 +39,20 @@ Route::get('/students/add', function () {
 Route::post('/students/add', [studentInfoController::class, 'store'])
 ->middleware(['auth', 'verified'])
 ->name('student-store');
+
+//fourth route - get all data from student info table
+
+Route::get('/students',[studentInfoController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('students');
+
+//fifth - view individually info
+
+Route::get('/students/{stuno}',[studentInfoController::class, 'show'])
+->middleware(['auth', 'verified'])
+->name('students-show');
+
+
 
 
 
