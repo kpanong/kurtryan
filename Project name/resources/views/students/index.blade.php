@@ -37,8 +37,13 @@
                                 <td>{{$stuinfo->gender}}</td>
                                 <td>
                                     <a class="mt-4 bg-teal-200 hover:bg-green-300 text-black font-bold py-2 px-4 rounded" href="{{route('students-show', ['stuno' => $stuinfo->sno])}}">View</a>
-                                    <a class="mt-4 bg-orange-300 hover:bg-red-800 text-black font-bold py-2 px-4 rounded" href="#">Edit</a>
-                                    <a class="mt-4 bg-amber-700 hover:bg-amber-400 text-black font-bold py-2 px-4 rounded" href="#">Delete</a>
+                                    <a class="mt-4 bg-orange-300 hover:bg-red-800 text-black font-bold py-2 px-4 rounded" href="{{route('students-edit', ['stuno' => $stuinfo->sno])}}">Edit</a>
+                                    <form method="POST" action="{{ route('students-delete', ['stuno'=>$stuinfo->sno]) }}" onclick="return confirm('Are you sure you want to delete this record?')">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="mt-4 bg-orange-300 hover:bg-red-800 text-black font-bold py-2 px-4 rounded" type="submit">Delete</button>
+                                </form>
+
 
                                 </td>
 

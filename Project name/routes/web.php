@@ -52,6 +52,24 @@ Route::get('/students/{stuno}',[studentInfoController::class, 'show'])
 ->middleware(['auth', 'verified'])
 ->name('students-show');
 
+//sixth - route to delete
+
+Route::delete('/students/delete/{stuno}',[studentInfoController::class, 'destroy'])
+->middleware(['auth', 'verified'])
+->name('students-delete');
+
+//seventh - transfer record to edit form
+
+Route::get('/students/edit/{stuno}',[studentInfoController::class, 'edit'])
+->middleware(['auth', 'verified'])
+->name('students-edit');
+
+//eighth - save the updated data
+
+Route::patch('/students/update/{stuno}',[studentInfoController::class, 'update'])
+->middleware(['auth', 'verified'])
+->name('students-update');
+
 
 
 
